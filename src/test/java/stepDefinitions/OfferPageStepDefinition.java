@@ -31,10 +31,11 @@ public class OfferPageStepDefinition {
 	
 	
 	
-	@Then("User search with {string} same shortname in offers page to check if product exist")
+	@Then("^User search with (.+) same shortname in offers page to check if product exist$")
 	public void User_search_with_same_shortname_in_offers_page(String shortname)
 	{
-		OfferPage offerpage=new OfferPage(inject.driver);
+		
+		OfferPage offerpage=inject.pageObjectManager.getOfferPageObject();
 		
 		switchToOffersPage();
 	
@@ -43,7 +44,7 @@ public class OfferPageStepDefinition {
 		
 		Assert.assertEquals(inject.vegname, offerveginame);
 		
-		inject.driver.quit();
+		
 		
 		
 	}
@@ -54,12 +55,7 @@ public class OfferPageStepDefinition {
 		LandingPage landingPage=inject.pageObjectManager.getLandingPageObject();
 		
 		landingPage.clickTopDealBtn();
-		Set<String>s1=inject.driver.getWindowHandles();
-		Iterator<String>i1=s1.iterator();
-		String parentWindow=i1.next();
-		String childWindow = i1.next();
-		
-		inject.driver.switchTo().window(childWindow);
+		inject.genericUtils.SwitchWindowToChild();
 		
 	}
 	

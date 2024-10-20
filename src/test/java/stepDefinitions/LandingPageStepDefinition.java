@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Iterator;
 import java.util.Set;
@@ -30,18 +31,13 @@ public class LandingPageStepDefinition {
 	InjectionInstance inject;
 	
 	@Given("User is on GreenKart landing page")
-	public void User_is_on_GreenKart_landing_page() {
+	public void User_is_on_GreenKart_landing_page() throws IOException {
 		
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\manik\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
-		
-		 inject.driver = new ChromeDriver(); 
-		 inject.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		 inject.driver.manage().window().maximize();
-		 inject.driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
+		//inject.testBase.WebDriverManager();
 		
 	}
 	
-	@When("User search with shortname {string} and extracted actual name of product")
+	@When("^User search with shortname (.+) and extracted actual name of product$")
 	public void User_search_with_shortname(String shortname) throws InterruptedException
 	{
 		LandingPage landingPage=inject.pageObjectManager.getLandingPageObject();

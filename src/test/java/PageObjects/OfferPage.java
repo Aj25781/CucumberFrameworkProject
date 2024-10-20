@@ -14,7 +14,7 @@ public class OfferPage {
 	
 	By searchOfferField=By.xpath("//input[@id='search-field']");
 	By getSearchText=By.cssSelector("tr td:nth-child(1)");
-	By topDealsBtn=By.linkText("Top Deals");
+	
 	
 	public void searchOfferFieldMethod(String shortname)
 	{
@@ -27,9 +27,6 @@ public class OfferPage {
 		return driver.findElement(By.cssSelector("tr td:nth-child(1)")).getText();
 	}
 	
-	public void clickTopDealBtn()
-	{
-		driver.findElement(topDealsBtn).click();
-	}
+	
 
 }
