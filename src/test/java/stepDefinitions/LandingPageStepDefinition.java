@@ -52,6 +52,18 @@ public class LandingPageStepDefinition {
 		
 	}
 	
+	@When("Added {string} items of selected product to cart")
+	public void added_items_product(String qty) {
+		
+		for(int i=0;i<=qty.length();i++)
+		{
+			inject.pageObjectManager.landingPage.incrementQty();
+		}
+		
+		inject.pageObjectManager.landingPage.addToCartPress();
+		
+	}
+	
 	
 
 
